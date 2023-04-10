@@ -1,4 +1,4 @@
-{% for inteface in interfaces %}
+{% for interface in interfaces %}
 interface {{interface.name}}
  description {{interface.description}}
  {% if interface.enabled %}no shutdown{%else%}shutdown{%endif%}
