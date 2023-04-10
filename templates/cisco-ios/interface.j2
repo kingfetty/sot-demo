@@ -2,15 +2,15 @@
 interface {{interface.name}}
  description {{interface.description}}
  {% if interface.enabled %}no shutdown{%else%}shutdown{%endif%}
+
  {%for ip in interface.ip_addresses%}
- ip address {{ip.address   }} {{ ip.address   }}
- {%endfor%}
+ ip address {{ip.address | address }} {{ ip.address | mask }}
+ {%endfor-%}
  no ip redirects
  no ip unreachables
  no ip proxy-arp
  ntp disable
  no mop enabled
- lldp enable
  {% if device_role.name == 'edgerouter' %}
  no lldp transmit
  no cdp enable
