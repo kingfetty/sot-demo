@@ -1,0 +1,22 @@
+{% for inteface in interfaces %}
+interface {{name}}
+ description {{description}}
+ {% if enabled %}no shutdown{%else%}shutdown{%endif%}
+ {%for ip in ip_addresses%}
+ ip address {{address | get_hostmask }} {{ address | get_netmask }}
+ {%endfor%}
+ no ip redirects
+ no ip unreachables
+ no ip proxy-arp
+ ntp disable
+ no mop enabled
+ lldp enable
+ {% if device_role.name == 'edgerouter' %}
+ no lldp transmit
+ no cdp enable
+ {% else %}
+ lldp transmit
+ cdp enable
+ {% endif %}
+ lldp receive
+{% endfor%}
