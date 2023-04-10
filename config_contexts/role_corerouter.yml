@@ -1,0 +1,12 @@
+---
+_metadata:
+  name: Edge Router
+  weight: 1000
+  description: Default settings for all edge router roles
+  is_active: true
+  roles:
+    - slug: corerouter
+bgp:
+  asn: 65001
+
+...
