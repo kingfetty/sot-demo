@@ -3,7 +3,7 @@ interface {{interface.name}}
  description {{interface.description}}
  {% if interface.enabled %}no shutdown{%else%}shutdown{%endif%}
  {%for ip in interface.ip_addresses%}
- ip address {{ip.address | get_hostmask }} {{ ip.address | get_netmask }}
+ ip address {{ip.address   }} {{ ip.address   }}
  {%endfor%}
  no ip redirects
  no ip unreachables
