@@ -4,6 +4,8 @@ _metadata:
   weight: 1000
   description: Default settings for all edge router roles
   is_active: true
+  roles:
+    - slug: edgerouter
 bgp:
   asn: 64512
 ...

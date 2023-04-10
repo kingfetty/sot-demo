@@ -4,6 +4,8 @@ _metadata:
   weight: 1000
   description: Deafult global settings for IOS devices
   is_active: true
+  platforms:
+    - slug: cisco-ios
 banners:
   - motd: |
       #####################################
