@@ -1,9 +1,9 @@
 {% for inteface in interfaces %}
-interface {{name}}
- description {{description}}
- {% if enabled %}no shutdown{%else%}shutdown{%endif%}
- {%for ip in ip_addresses%}
- ip address {{address | get_hostmask }} {{ address | get_netmask }}
+interface {{interface.name}}
+ description {{interface.description}}
+ {% if interface.enabled %}no shutdown{%else%}shutdown{%endif%}
+ {%for ip in interface.ip_addresses%}
+ ip address {{ip.address | get_hostmask }} {{ ip.address | get_netmask }}
  {%endfor%}
  no ip redirects
  no ip unreachables
