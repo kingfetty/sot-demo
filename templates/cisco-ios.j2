@@ -1,3 +1,11 @@
 hostname {{hostname}}
 
 {% include 'templates/' ~ platform.slug ~ '/interface.j2' %}
+
+{% for banner in banners %}
+{% for key,value in banner.items() %}
+banner {{key}} ^
+{{value}}
+^
+{% endfor%}
+{% endfor %}
