@@ -1,0 +1,59 @@
+---
+banners:
+  - motd: |
+    #####################################
+    #                                   #
+    #        MOTD Banner for SoT        #
+    #                                   #
+    #####################################
+  - login: |
+    ************************************
+    *           LOGIN BANNER           *
+    ************************************
+ip:
+  access_lists:
+    standard:
+      - restrict_SNMP:
+        rules:
+          - action: permit
+            source: 192.168.1.0/24
+            logging: true
+          - action: permit
+            source: 192.168.99.0/24
+            logging: false
+ntp:
+  servers:
+    - 1.2.3.4
+    - 4.3.2.1
+logging:
+  buffered:
+    severity: informational
+    size: 100000
+  servers:
+    - 192.168.1.100
+    - 192.168.2.100
+snmp:
+  communities:
+    - public:
+      acl_v4: restrict_SNMP
+      ro: true
+      rw: false
+  groups:
+    - v3_group:
+      acl_v4: restrict_SNMP
+      version: v3
+      version_option: priv
+  hosts:
+    - host: 192.168.1.100
+      version: 2c
+  users:
+    - username: v3user
+      authentication:
+        algorithm: sha
+        password: v3pass
+      encryption:
+        password: v3pass
+        priv: aes
+        priv_option: 128
+      group: v3_group
+...
