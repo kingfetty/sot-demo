@@ -1,4 +1,9 @@
 ---
+_metadata:
+  name: IOS defaults
+  weight: 1000
+  description: Deafult global settings for IOS devices
+  is_active: true
 banners:
   - motd: |
     #####################################
