@@ -29,7 +29,6 @@ ip dhcp bootp ignore
 {% for banner in config_context.banners %}
 {% for key,value in banner.items() %}
 banner {{key}} ^
-{{value}}
-^
+{{ value }}^
 {% endfor%}
 {% endfor %}
