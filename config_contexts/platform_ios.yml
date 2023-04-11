@@ -46,8 +46,7 @@ snmp:
   communities:
     - public:
       acl_v4: restrict_SNMP
-      ro: true
-      rw: false
+      permission: ro
   groups:
     - v3_group:
       acl_v4: restrict_SNMP
@@ -57,7 +56,7 @@ snmp:
     - host: 192.168.1.100
       version: 2c
   users:
-    - username: v3user
+    - name: v3user
       authentication:
         algorithm: sha
         password: v3pass
