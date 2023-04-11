@@ -28,6 +28,8 @@ ip dhcp bootp ignore
 !
 {% include 'templates/' ~ platform.slug ~ '/ntp.j2' %}
 !
+{% include 'templates/' ~ platform.slug ~ '/logging.j2' %}
+!
 {% for banner in config_context.banners %}
 {% for key,value in banner.items() %}
 banner {{key}} ^

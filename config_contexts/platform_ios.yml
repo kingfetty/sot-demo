@@ -34,6 +34,8 @@ ntp:
     - 1.2.3.4
     - 4.3.2.1
 logging:
+  console:
+    severity: warnings
   buffered:
     severity: informational
     size: 100000

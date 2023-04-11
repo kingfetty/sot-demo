@@ -1,0 +1,15 @@
+{% if config_context.logging is defined %}
+{% for server in config_context.logging.servers %}
+logging host {{ server }}
+{% endfor %}
+logging buffered {{ config_context.logging.buffered.severity }}
+logging buffered {{ config_context.logging.buffered.size }}
+logging console {{ config_context.logging.console.severity }}
+!
+archive
+ log config
+  logging enable
+  logging size 500
+  hidekeys
+  notify syslog contenttype plaintext
+{% endif %}
