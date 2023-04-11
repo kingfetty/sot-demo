@@ -1,22 +1,29 @@
 {% for interface in interfaces %}
 interface {{interface.name}}
+{% if interface.description != '' %}
  description {{interface.description}}
- {% if interface.enabled %}no shutdown{%else%}shutdown{%endif%}
-
- {%for ip in interface.ip_addresses%}
+{% else %}
+ description to {{ inteface.connected_interface.device.name }} {{ interface.connected_interface.name }}
+{% endif %}
+{% if interface.enabled %}
+ no shutdown
+{%else%}
+ shutdown
+{%endif%}
+{%for ip in interface.ip_addresses%}
  ip address {{ip.address | address }} {{ ip.address | mask }}
- {%endfor-%}
+{%endfor-%}
  no ip redirects
  no ip unreachables
  no ip proxy-arp
  ntp disable
  no mop enabled
- {% if device_role.name == 'edgerouter' %}
+{% if device_role.name == 'edgerouter' %}
  no lldp transmit
  no cdp enable
- {% else %}
+{% else %}
  lldp transmit
  cdp enable
- {% endif %}
+{% endif %}
  lldp receive
 {% endfor%}
