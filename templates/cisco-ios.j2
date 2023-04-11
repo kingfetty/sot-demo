@@ -31,7 +31,7 @@ ip ftp source-interface {{ primary_ip4.interface.name }}
 !
 {% include 'templates/' ~ platform.slug ~ '/interface.j2' %}
 !
-# {% include 'templates/' ~ platform.slug ~ '/acl.j2' %}
+
 !
 {% include 'templates/' ~ platform.slug ~ '/ntp.j2' %}
 !
