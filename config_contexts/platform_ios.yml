@@ -22,13 +22,13 @@ ip:
   access_lists:
     standard:
       - restrict_SNMP:
-        rules:
-          - action: permit
-            source: 192.168.1.0/24
-            logging: True
-          - action: permit
-            source: 192.168.99.0/24
-            logging: False
+          rules:
+            - action: permit
+              source: 192.168.1.0/24
+              logging: True
+            - action: permit
+              source: 192.168.99.0/24
+              logging: False
 ntp:
   servers:
     - 1.2.3.4
@@ -45,13 +45,13 @@ logging:
 snmp:
   communities:
     - public:
-      acl_v4: restrict_SNMP
-      permission: ro
+        acl_v4: restrict_SNMP
+        permission: ro
   groups:
     - v3_group:
-      acl_v4: restrict_SNMP
-      version: v3
-      version_option: priv
+        acl_v4: restrict_SNMP
+        version: v3
+        version_option: priv
   hosts:
     - host: 192.168.1.100
       version: 2c
