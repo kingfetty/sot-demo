@@ -4,7 +4,7 @@ snmp-server group {{name}} {{group.version}} {{group.version_option}} {% if grou
 
 {% endfor %}
 {% for name,community in config_context.snmp.communities.items() %}
-snmp-server community {{name}} {{community.permission}}{% if community.acl_v4 is defined %} {{community.acl_v4}}
+snmp-server community {{name}} {{community.permission}}{% if community.acl_v4 is defined %} {{community.acl_v4}}{%endif%}
 
 {% endfor %}
 {% for user in config_context.snmp.users %}
