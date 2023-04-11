@@ -22,10 +22,12 @@ no ip bootp server
 ip domain name {{ config_context.domain.name }}
 ip dhcp bootp ignore
 !
+{% if primary_ip4 is not none %}
 ip telnet source-interface {{ primary_ip4.interface.name }}
 ip ssh source-interface {{ primary_ip4.interface.name }}
 ip tftp source-interface {{ primary_ip4.interface.name }}
 ip ftp source-interface {{ primary_ip4.interface.name }}
+{% endif %}
 !
 {% include 'templates/' ~ platform.slug ~ '/interface.j2' %}
 !
