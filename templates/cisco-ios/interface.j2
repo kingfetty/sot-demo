@@ -2,7 +2,7 @@
 interface {{interface.name}}
 {% if interface.description != '' %}
  description {{interface.description}}
-{% elif connected_interface is defined %}
+{% elif connected_interface is not none %}
  description to {{ interface.connected_interface.device.name }} {{ interface.connected_interface.name }}
 {% endif %}
 {% if interface.enabled %}
@@ -12,7 +12,7 @@ interface {{interface.name}}
 {%endif%}
 {%for ip in interface.ip_addresses%}
  ip address {{ip.address | address }} {{ ip.address | mask }}
-{%endfor-%}
+{%endfor%}
  no ip redirects
  no ip unreachables
  no ip proxy-arp
