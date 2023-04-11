@@ -4,6 +4,7 @@
 ip access-list standard {{ name }}
 {% for rule in acl.rules %}
  {{ rule.action}} {{ rule.source | address }} {{ rule.source | wildcard }} {% if rule.logging %}log{%endif%}
+
 {% endfor %}
 {% endfor %}
 {% endfor %}
@@ -14,6 +15,7 @@ ip access-list standard {{ name }}
 ip access-list extended {{ name }}
 {% for rule in acl.rules %}
  {{ rule.action}} {{rule.protocol}} {{ rule.source | address }} {{ rule.source | wildcard }} {{rule.destination | address}} {{rule.destination | wildcard}} {% if rule.logging %}log{%endif%}
+ 
 {% endfor %}
 {% endfor %}
 {% endfor %}
