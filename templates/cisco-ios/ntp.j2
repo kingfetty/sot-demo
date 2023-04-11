@@ -1,0 +1,5 @@
+{% if config_context.ntp is defined %}
+{% for server in config_context.ntp.servers %}
+ntp server {{ server }}
+{% endfor %}
+{% endif %}
