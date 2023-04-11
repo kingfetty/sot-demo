@@ -17,15 +17,11 @@ interface {{interface.name}}
  no ip unreachables
  no ip proxy-arp
  ntp disable
- no mop enabled
 {% if device_role.name == 'edgerouter' %}
- no lldp transmit
  no cdp enable
 {% else %}
- lldp transmit
  cdp enable
 {% endif %}
- lldp receive
  logging event link-status
 !
 {% endfor%}

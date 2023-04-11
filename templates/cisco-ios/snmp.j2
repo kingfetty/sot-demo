@@ -1,7 +1,7 @@
 {% if config_context.snmp is defined %}
 {% for value in config_context.snmp.groups %}
 {% for name,group in value.items() %}
-snmp-server group {{name}} {{group.version}} {{group.version_option}} {% if group.acl_v4 is defined %}{{group.acl_v4}}{%endif%}
+snmp-server group {{name}} {{group.version}} {{group.version_option}}{% if group.acl_v4 is defined %} access {{group.acl_v4}}{%endif%}
 
 {% endfor %}
 {% endfor %}
