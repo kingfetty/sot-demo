@@ -1,7 +1,31 @@
 hostname {{hostname}}
-
+!
+service nagle
+no service pad
+service tcp-keepalives-in
+service tcp-keepalives-out
+service timestamps debug datetime msec localtime show-timezone
+service timestamps log datetime msec localtime show-timezone
+service password-encryption
+service sequence-numbers
+no service dhcp
+no platform punt-keepalive disable-kernel-core
+!
+ip ssh time-out 60
+ip ssh logging events
+ip ssh version 2
+!
+no ip http server
+no ip http secure-server
+no ip bootp server
+{% if not config_context.domain.lookup %}no{% endif %} ip domain lookup
+ip domain name {{ config_context.domain.name }}
+ip dhcp bootp ignore
+!
 {% include 'templates/' ~ platform.slug ~ '/interface.j2' %}
-
+!
+{% include 'templates/' ~ platform.slug ~ '/acl.j2' %}
+!
 {% for banner in config_context.banners %}
 {% for key,value in banner.items() %}
 banner {{key}} ^
