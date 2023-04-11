@@ -37,7 +37,7 @@ ip ftp source-interface {{ primary_ip4.interface.name }}
 !
 {% include 'templates/' ~ platform.slug ~ '/logging.j2' %}
 !
-
+{% include 'templates/' ~ platform.slug ~ '/snmp.j2' %}
 !
 {% for banner in config_context.banners %}
 {% for key,value in banner.items() %}

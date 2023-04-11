@@ -1,16 +1,20 @@
 {% if config_context.ip.access_lists.standard is defined %}
-{% for name,acl in config_context.ip.access_lists.standard.items() %}
+{% for value in config_context.ip.access_lists.standard %}
+{% for name,acl in value.items() %}
 ip access-list standard {{ name }}
 {% for rule in acl.rules %}
  {{ rule.action}} {{ rule.source | address }} {{ rule.source | wildcard }} {% if rule.logging %}log{%endif%}
 {% endfor %}
-{% endfor%}
+{% endfor %}
+{% endfor %}
 {% endif%}
 {% if config_context.ip.access_lists.extended is defined %}
-{% for name,acl in config_context.ip.access_lists.extended.items() %}
+{% for value in config_context.ip.access_lists.extended %}
+{% for name,acl in value.items() %}
 ip access-list extended {{ name }}
 {% for rule in acl.rules %}
  {{ rule.action}} {{rule.protocol}} {{ rule.source | address }} {{ rule.source | wildcard }} {{rule.destination | address}} {{rule.destination | wildcard}} {% if rule.logging %}log{%endif%}
 {% endfor %}
-{% endfor%}
+{% endfor %}
+{% endfor %}
 {% endif%}
