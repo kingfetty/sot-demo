@@ -1,11 +1,15 @@
 {% if config_context.snmp is defined %}
-{% for name,group in config_context.snmp.groups.items() %}
+{% for value in config_context.snmp.groups %}
+{% for name,group in value.items() %}
 snmp-server group {{name}} {{group.version}} {{group.version_option}} {% if group.acl_v4 is defined %}{{group.acl_v4}}{%endif%}
 
 {% endfor %}
-{% for name,community in config_context.snmp.communities.items() %}
+{% endfor %}
+{% for value in config_context.snmp.communities %}
+{% for name,community in value.items() %}
 snmp-server community {{name}} {{community.permission}}{% if community.acl_v4 is defined %} {{community.acl_v4}}{%endif%}
 
+{% endfor %}
 {% endfor %}
 {% for user in config_context.snmp.users %}
 snmp-server user {{user.name}} {{user.group}} v3 auth {{user.authentication.algorithm}} {{user.authentication.password}} priv {{user.encryption.priv}} {{user.encryption.priv_option}} {{user.encryption.password}}
