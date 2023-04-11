@@ -2,7 +2,7 @@
 interface {{interface.name}}
 {% if interface.description != '' %}
  description {{interface.description}}
-{% elif connected_interface is not none %}
+{% elif connected_interface  %}
  description to {{ interface.connected_interface.device.name }} {{ interface.connected_interface.name }}
 {% endif %}
 {% if interface.enabled %}
