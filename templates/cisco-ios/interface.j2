@@ -24,7 +24,7 @@ interface {{interface.name}}
 {% endif %}
  logging event link-status
 
-{% if interface._custom_field_data.access_list is defined %}
+{% if interface._custom_field_data.access_list | type != 'None' %}
  ip access-group {{ interface._custom_field_data.access_list.id }} {{ interface._custom_field_data.access_list.direction }}
 {%endif%}
 !
