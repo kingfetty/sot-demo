@@ -6,6 +6,23 @@ _metadata:
   is_active: true
   roles:
     - slug: edgerouter
-bgp:
-  asn: 64512
+ip:
+  access_lists:
+    extended:
+      - INET_IN:
+          rules:
+            - action: deny
+              source: 
+                address: 0.0.0.0/0
+                port: 1 65535
+                port_match: range
+              destination: 
+                address: 0.0.0.0/0
+                port: 22
+                port_match: eq
+              protocol: tcp
+              logging: True
+            - action: permit
+              source: 192.168.99.0/24
+              logging: False
 ...
