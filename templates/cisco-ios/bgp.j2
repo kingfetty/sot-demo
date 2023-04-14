@@ -1,6 +1,7 @@
 {% for bgp in bgp_routing_instances %}
 router bgp {{bgp.autonomous_system.asn}}
  bgp router-id {{bgp.router_id.address | address }}
+ redistribute connected
 {% for nbr in bgp.autonomous_system.endpoints %}
 {% if nbr.peer.routing_instance.id != bgp.id %}
  neighbor {{nbr.peer.source_interface.ip_addresses[0].address | address }} remote-as {{nbr.peer.autonomous_system.asn}}
