@@ -15,7 +15,7 @@ ip access-list standard {{ name }}
 {% for name,acl in value.items() %}
 ip access-list extended {{ name }}
 {% for rule in acl.rules %}
- {{ rule.action}} {{rule.protocol}} {{ rule.source.address | address }} {{ rule.source.address | wildcard }} {{rule.destination.address | address}} {% if rule.source.port is defined %}{{rule.source.port_match}} {{rule.source.port}}{%endif%} {{rule.destination.address | address }} {{rule.destination.address | wildcard}} {% if rule.destination.port is defined %}{{rule.destination.port_match}} {{rule.destination.port}}{%endif%} {% if rule.logging %}log{%endif%}
+ {{ rule.action}} {{rule.protocol}} {{ rule.source.address | address }} {{ rule.source.address | wildcard }} {% if rule.source.port is defined %}{{rule.source.port_match}} {{rule.source.port}}{%endif%} {{rule.destination.address | address }} {{rule.destination.address | wildcard}} {% if rule.destination.port is defined %}{{rule.destination.port_match}} {{rule.destination.port}}{%endif%} {% if rule.logging %}log{%endif%}
  
 {% endfor %}
 {% endfor %}
