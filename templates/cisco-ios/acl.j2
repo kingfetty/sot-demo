@@ -9,6 +9,7 @@ ip access-list standard {{ name }}
 {% endfor %}
 {% endfor %}
 {% endif%}
+!
 {% if config_context.ip.access_lists.extended is defined %}
 {% for value in config_context.ip.access_lists.extended %}
 {% for name,acl in value.items() %}
