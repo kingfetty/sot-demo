@@ -1,0 +1,7 @@
+{% for bgp in bgp_routing_instances %}
+router bgp {{bgp.autonomous_system.asn}}
+ bgp router-id {{bgp.router_id.address | address }}
+{% for nbr in bgp.autonomous_system.endpoints %}
+ neighbor {{nbr.peer.source_interface.ip_addresses[0].address}} remote-as {{nbr.peer.autonomous_system.asn}}
+{% endfor %}
+{% endfor %}

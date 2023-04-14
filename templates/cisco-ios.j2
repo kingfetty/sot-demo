@@ -28,6 +28,8 @@ ip tftp source-interface {{ primary_ip4.interface.name }}
 ip ftp source-interface {{ primary_ip4.interface.name }}
 {% endif %}
 !
+{% include 'templates/' ~ platform.slug ~ '/bgp.j2' %}
+!
 {% include 'templates/' ~ platform.slug ~ '/acl.j2' %}
 !
 {% include 'templates/' ~ platform.slug ~ '/interface.j2' %}
