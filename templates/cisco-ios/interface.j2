@@ -23,5 +23,8 @@ interface {{interface.name}}
  cdp enable
 {% endif %}
  logging event link-status
+{% if _custom_field_data.access_list is not none %}
+ ip access-group {{ _custom_field_data.access_list.id }} {{ _custom_field_data.access_list.direction }}
+{%endif%}
 !
 {% endfor%}
